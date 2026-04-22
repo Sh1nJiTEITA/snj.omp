@@ -1,0 +1,81 @@
+---
+$schema: https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+blocks:
+  # - alignment: left
+  #   segments: 
+  #     - background: '#c4a7e7' # Iris
+  #       foreground: '#191724' # Base
+  #       leading_diamond: 
+  #       style: diamond
+  #       template:  {{ .Name }}
+  #       trailing_diamond: <transparent,#c4a7e7></>
+  #       type: shell
+  #     - background: '#26233a' # Overlay
+  #       foreground: '#f6c177' # Gold
+  #       leading_diamond: 
+  #       properties:
+  #         style: roundrock
+  #         threshold: 0
+  #       style: diamond
+  #       template: ' {{ .FormattedMs }} '
+  #       trailing_diamond: 
+  #       type: executiontime
+  #   type: prompt
+  - alignment: left
+    # newline: true
+    segments:
+      - foreground: '#6e6a86'   # Muted
+        style: plain
+        template: ╭─
+        type: text
+      - foreground: '#908caa'   # Subtle
+        properties:
+          time_format: 15:04
+        style: plain
+        template: ' <#f6c177></> | {{ .CurrentDate | date .Format }} |' # Gold icon
+        type: time
+      - foreground: '#eb6f92'   # Love
+        style: plain
+        template: '  '
+        type: root
+      - foreground: '#9ccfd8'   # Foam
+        properties:
+          folder_icon: ' '
+          folder_separator_icon: '  '
+          home_icon: ' '
+        style: plain
+        template: ' {{ .Path }} '
+        type: path
+    type: prompt
+  - alignment: right
+    segments:
+      - background: '#26233a'   # Overlay
+        foreground: '#ebbcba'   # Rose
+        leading_diamond: 
+        properties:
+          branch_icon: ' '
+          fetch_stash_count: true
+          fetch_status: true
+          fetch_upstream_icon: true
+          fetch_worktree_count: true
+        style: diamond
+        template: ' {{ .HEAD }}{{if .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
+        trailing_diamond: 
+        type: git
+    type: prompt
+  - alignment: left
+    newline: true
+    segments:
+      - properties:
+          always_enabled: true
+        style: plain
+        template: '<#6e6a86>╰─</> <#c4a7e7>$</> ' # Muted line, Iris prompt
+        type: status
+    type: prompt
+console_title_template: '{{ .Folder }}'
+transient_prompt:
+  background: transparent
+  foreground: '#c4a7e7'         # Iris
+  template: ' '
+version: 3
+final_space: false
