@@ -32,7 +32,7 @@ blocks:
         properties:
           time_format: 15:04
         style: plain
-        template: ' <#f6c177></> | {{ .CurrentDate | date .Format }} |' # Gold icon
+        template: ' <#c4a7e7></> | {{ .CurrentDate | date .Format }} |' # Gold icon
         type: time
       - foreground: '#eb6f92'   # Love
         style: plain
