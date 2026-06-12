@@ -47,22 +47,6 @@ blocks:
         template: ' {{ .Path }} '
         type: path
     type: prompt
-  - alignment: right
-    segments:
-      - background: '#26233a'   # Overlay
-        foreground: '#ebbcba'   # Rose
-        leading_diamond: 
-        properties:
-          branch_icon: ' '
-          fetch_stash_count: true
-          fetch_status: true
-          fetch_upstream_icon: true
-          fetch_worktree_count: true
-        style: diamond
-        template: ' {{ .HEAD }}{{if .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
-        trailing_diamond: 
-        type: git
-    type: prompt
   - alignment: left
     newline: true
     segments:
